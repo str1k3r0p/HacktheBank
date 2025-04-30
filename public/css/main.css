@@ -1,0 +1,211 @@
+/* HackMeBank Main Stylesheet */
+
+:root {
+  /* Color scheme */
+  --primary-color: #1a3b6e;      /* Deep blue for header/footer */
+  --secondary-color: #0d8a6f;    /* Teal for accents */
+  --accent-color: #ffc107;       /* Amber for highlights */
+  --danger-color: #dc3545;       /* Red for alerts/errors */
+  --success-color: #28a745;      /* Green for success states */
+  --warning-color: #fd7e14;      /* Orange for warnings */
+  --light-color: #f8f9fa;        /* Light grey for backgrounds */
+  --dark-color: #212529;         /* Dark for text */
+  --muted-color: #6c757d;        /* Muted text */
+  
+  /* Typography */
+  --body-font: 'Roboto', 'Segoe UI', sans-serif;
+  --heading-font: 'Montserrat', 'Segoe UI', sans-serif;
+  
+  /* Spacing */
+  --section-spacing: 2rem;
+  --card-spacing: 1.5rem;
+}
+
+/* Global styles */
+body {
+  font-family: var(--body-font);
+  color: var(--dark-color);
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+}
+
+main {
+  flex: 1;
+}
+
+/* Custom navbar styling */
+.navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary-color) !important;
+  padding: 0.75rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+/* Cards */
+.card {
+  border-radius: 0.5rem;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Buttons */
+.btn {
+  font-weight: 500;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #12294d;
+  border-color: #12294d;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: #096a56;
+  border-color: #096a56;
+}
+
+/* Account section styling */
+.account-card {
+  border-left: 5px solid var(--primary-color);
+  margin-bottom: 1.25rem;
+}
+
+.account-balance {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.account-number {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+}
+
+/* Transaction list */
+.transaction-list .transaction-item {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s;
+}
+
+.transaction-list .transaction-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.transaction-amount {
+  font-weight: 600;
+}
+
+.transaction-amount.positive {
+  color: var(--success-color);
+}
+
+.transaction-amount.negative {
+  color: var(--danger-color);
+}
+
+.transaction-date {
+  color: var(--muted-color);
+  font-size: 0.85rem;
+}
+
+.transaction-id {
+  font-size: 0.75rem;
+  color: var(--muted-color);
+  font-family: monospace;
+}
+
+/* User profile styles */
+.user-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.profile-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Notification badges */
+.notification-badge {
+  position: relative;
+}
+
+.notification-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--danger-color);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color) !important;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .account-balance {
+    font-size: 1.5rem;
+  }
+  
+  .security-level-selector {
+    margin: 1rem 0;
+  }
+}

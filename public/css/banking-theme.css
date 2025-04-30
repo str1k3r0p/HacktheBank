@@ -1,0 +1,1307 @@
+/* HackMeBank Cyberpunk Theme CSS */
+
+:root {
+    /* Cyberpunk Color Palette */
+    --cyber-primary: #0ff;       /* Bright cyan - main accent */
+    --cyber-secondary: #f0c;     /* Neon magenta - secondary accent */
+    --cyber-tertiary: #0f0;      /* Neon green - tertiary accent */
+    --cyber-bg-dark: #0b0b1e;    /* Dark blue-black - primary background */
+    --cyber-bg-darker: #050510;  /* Near black - darker background */
+    --cyber-bg-light: #131338;   /* Slightly lighter blue - secondary background */
+    --cyber-text: #fff;          /* White - primary text */
+    --cyber-text-dim: #a0a0c0;   /* Dim blue-white - secondary text */
+    --cyber-danger: #ff2266;     /* Neon red - for warnings/errors */
+    --cyber-warning: #ffdd00;    /* Yellow - for cautions */
+    --cyber-success: #00ff66;    /* Bright green - for success states */
+    
+    /* Font settings */
+    --cyber-font-main: 'Rajdhani', 'Orbitron', sans-serif;
+    --cyber-font-mono: 'Share Tech Mono', 'Courier New', monospace;
+  }
+  
+  /* Apply base styles */
+  body {
+    background-color: var(--cyber-bg-dark);
+    color: var(--cyber-text);
+    font-family: var(--cyber-font-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-image: 
+      linear-gradient(0deg, rgba(11,11,30,0.95) 0%, rgba(11,11,30,0.95) 100%),
+      url('../assets/images/grid-pattern.png');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  /* ================ HEADER & NAVIGATION ================ */
+  
+  .navbar {
+    background: linear-gradient(90deg, var(--cyber-bg-darker) 0%, var(--cyber-bg-dark) 100%);
+    border-bottom: 2px solid var(--cyber-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    padding: 0.75rem 0;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .navbar-brand {
+    font-family: var(--cyber-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cyber-primary) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  }
+  
+  .navbar-brand img {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.7));
+  }
+  
+  .navbar-nav .nav-link {
+    color: var(--cyber-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus,
+  .navbar-nav .nav-link.active {
+    color: var(--cyber-primary);
+  }
+  
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: var(--cyber-primary);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link:focus::after,
+  .navbar-nav .nav-link.active::after {
+    width: 80%;
+  }
+  
+  /* Dropdown menu */
+  .dropdown-menu {
+    background-color: var(--cyber-bg-darker);
+    border: 1px solid var(--cyber-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    padding: 0.5rem;
+  }
+  
+  .dropdown-item {
+    color: var(--cyber-text);
+    transition: all 0.2s ease;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .dropdown-item:hover, 
+  .dropdown-item:focus {
+    background-color: rgba(0, 255, 255, 0.1);
+    color: var(--cyber-primary);
+  }
+  
+  /* ================ SECURITY LEVEL SELECTOR ================ */
+  
+  .security-level-selector {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--cyber-text-dim);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .security-level-label {
+    color: var(--cyber-text);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .security-btn {
+    background: transparent;
+    border: 1px solid;
+    font-family: var(--cyber-font-mono);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0 2px;
+    padding: 0.25rem 0.75rem;
+    transition: all 0.3s ease;
+  }
+  
+  .security-btn[data-level="low"] {
+    border-color: var(--cyber-danger);
+    color: var(--cyber-danger);
+  }
+  
+  .security-btn[data-level="medium"] {
+    border-color: var(--cyber-warning);
+    color: var(--cyber-warning);
+  }
+  
+  .security-btn[data-level="high"] {
+    border-color: var(--cyber-success);
+    color: var(--cyber-success);
+  }
+  
+  .security-btn[data-level="low"].active {
+    background-color: var(--cyber-danger);
+    color: var(--cyber-bg-darker);
+    box-shadow: 0 0 10px rgba(255, 34, 102, 0.7);
+  }
+  
+  .security-btn[data-level="medium"].active {
+    background-color: var(--cyber-warning);
+    color: var(--cyber-bg-darker);
+    box-shadow: 0 0 10px rgba(255, 221, 0, 0.7);
+  }
+  
+  .security-btn[data-level="high"].active {
+    background-color: var(--cyber-success);
+    color: var(--cyber-bg-darker);
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.7);
+  }
+  
+  /* ================ MAIN CONTENT ================ */
+  
+  main {
+    min-height: calc(100vh - 200px);
+    padding: 2rem 0;
+  }
+  
+  /* Cards */
+  .card {
+    background-color: rgba(19, 19, 56, 0.7);
+    border: 1px solid var(--cyber-text-dim);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    border-color: var(--cyber-primary);
+  }
+  
+  .card-header {
+    background: linear-gradient(90deg, var(--cyber-bg-darker) 0%, var(--cyber-bg-dark) 100%);
+    border-bottom: 1px solid var(--cyber-text-dim);
+    padding: 1rem;
+    color: var(--cyber-primary);
+    font-weight: 600;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    color: var(--cyber-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .card-text {
+    color: var(--cyber-text);
+  }
+  
+  /* ================ DASHBOARD ELEMENTS ================ */
+  
+  .dashboard-summary {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(240, 0, 204, 0.1) 100%);
+    border: 1px solid var(--cyber-primary);
+    border-radius: 5px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .dashboard-summary::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+    animation: scanline 3s linear infinite;
+    top: 0;
+    left: 0;
+  }
+  
+  @keyframes scanline {
+    0% {
+      top: 0%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+  
+  .summary-amount {
+    font-family: var(--cyber-font-mono);
+    font-size: 2.5rem;
+    color: var(--cyber-primary);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* ================ ACCOUNT ELEMENTS ================ */
+  
+  .credit-card-box {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(19, 19, 56, 0.9) 100%);
+    border: 1px solid var(--cyber-primary);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+    transition: all 0.3s ease;
+  }
+  
+  .credit-card-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+  }
+  
+  .credit-card-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 255, 255, 0.05) 10px,
+      rgba(0, 255, 255, 0.05) 20px
+    );
+    z-index: 0;
+  }
+  
+  .card-number, .card-holder-name, .card-expiry {
+    font-family: var(--cyber-font-mono);
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ================ TYPOGRAPHY & LINKS ================ */
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--cyber-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  a {
+    color: var(--cyber-primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--cyber-tertiary);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+  }
+  
+  /* ================ BUTTONS ================ */
+  
+  .btn {
+    font-family: var(--cyber-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+  
+  .btn:hover::before {
+    left: 100%;
+  }
+  
+  .btn-primary {
+    background-color: transparent;
+    border: 2px solid var(--cyber-primary);
+    color: var(--cyber-primary);
+  }
+  
+  .btn-primary:hover, .btn-primary:focus {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: var(--cyber-primary);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--cyber-secondary);
+    color: var(--cyber-secondary);
+  }
+  
+  .btn-secondary:hover, .btn-secondary:focus {
+    background-color: rgba(240, 0, 204, 0.2);
+    color: var(--cyber-secondary);
+    box-shadow: 0 0 10px rgba(240, 0, 204, 0.5);
+  }
+  
+  .btn-success {
+    background-color: transparent;
+    border: 2px solid var(--cyber-success);
+    color: var(--cyber-success);
+  }
+  
+  .btn-success:hover, .btn-success:focus {
+    background-color: rgba(0, 255, 102, 0.2);
+    color: var(--cyber-success);
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+  }
+  
+  .btn-danger {
+    background-color: transparent;
+    border: 2px solid var(--cyber-danger);
+    color: var(--cyber-danger);
+  }
+  
+  .btn-danger:hover, .btn-danger:focus {
+    background-color: rgba(255, 34, 102, 0.2);
+    color: var(--cyber-danger);
+    box-shadow: 0 0 10px rgba(255, 34, 102, 0.5);
+  }
+  
+  /* ================ FORMS ================ */
+  
+  .form-control {
+    background-color: var(--cyber-bg-darker);
+    border: 1px solid var(--cyber-text-dim);
+    border-radius: 3px;
+    color: var(--cyber-text);
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .form-control:focus {
+    background-color: var(--cyber-bg-dark);
+    border-color: var(--cyber-primary);
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.25);
+    color: var(--cyber-text);
+  }
+  
+  .form-label {
+    color: var(--cyber-text);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-text {
+    color: var(--cyber-text-dim);
+    font-size: 0.85rem;
+  }
+  
+  .input-group-text {
+    background-color: var(--cyber-bg-darker);
+    border: 1px solid var(--cyber-text-dim);
+    color: var(--cyber-primary);
+  }
+  
+  /* ================ ALERTS ================ */
+  
+  .alert {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .alert-primary {
+    background-color: rgba(0, 255, 255, 0.1);
+    border-color: var(--cyber-primary);
+    color: var(--cyber-primary);
+  }
+  
+  .alert-warning {
+    background-color: rgba(255, 221, 0, 0.1);
+    border-color: var(--cyber-warning);
+    color: var(--cyber-warning);
+  }
+  
+  .alert-danger {
+    background-color: rgba(255, 34, 102, 0.1);
+    border-color: var(--cyber-danger);
+    color: var(--cyber-danger);
+  }
+  
+  .alert-success {
+    background-color: rgba(0, 255, 102, 0.1);
+    border-color: var(--cyber-success);
+    color: var(--cyber-success);
+  }
+  
+  /* ================ FOOTER ================ */
+  
+  .footer {
+    background-color: var(--cyber-bg-darker);
+    border-top: 2px solid var(--cyber-primary);
+    color: var(--cyber-text-dim);
+    padding: 2rem 0;
+    position: relative;
+  }
+  
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyber-primary), transparent 80%);
+  }
+  
+  /* ================ UTILITIES ================ */
+  
+  .text-cyber-primary {
+    color: var(--cyber-primary) !important;
+  }
+  
+  .text-cyber-secondary {
+    color: var(--cyber-secondary) !important;
+  }
+  
+  .text-cyber-tertiary {
+    color: var(--cyber-tertiary) !important;
+  }
+  
+  .text-cyber-danger {
+    color: var(--cyber-danger) !important;
+  }
+  
+  .border-cyber-primary {
+    border-color: var(--cyber-primary) !important;
+  }
+  
+  .bg-cyber-dark {
+    background-color: var(--cyber-bg-dark) !important;
+  }
+  
+  .bg-cyber-darker {
+    background-color: var(--cyber-bg-darker) !important;
+  }
+  
+  .cyber-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  /* ================ ANIMATIONS ================ */
+  
+  .cyber-flicker {
+    animation: flicker 3s infinite alternate;
+  }
+  
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+    }
+    20%, 22%, 24%, 55% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* ================ RESPONSIVE ADJUSTMENTS ================ */
+  
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      background-color: var(--cyber-bg-darker);
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid var(--cyber-primary);
+    }
+    
+    .security-level-selector {
+      margin: 1rem 0;
+    }
+    
+    .summary-amount {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-summary {
+      padding: 1.5rem;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* ================ LOGIN/REGISTER FORM STYLING ================ */
+  
+  .auth-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(11, 11, 30, 0.7), rgba(11, 11, 30, 0.9)), 
+                url('../assets/images/grid-pattern.png');
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .auth-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: 0;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+  }
+  
+  .auth-card {
+    background-color: rgba(5, 5, 16, 0.85);
+    border: 1px solid var(--cyber-primary);
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    padding: 2rem;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(90deg, transparent 50%, rgba(0, 255, 255, 0.05) 50%),
+      linear-gradient(rgba(0, 255, 255, 0.05) 50%, transparent 50%);
+    background-size: 4px 4px;
+    z-index: -1;
+  }
+  
+  .auth-title {
+    color: var(--cyber-primary);
+    font-family: var(--cyber-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .auth-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 50px;
+    height: 2px;
+    background-color: var(--cyber-primary);
+    transform: translateX(-50%);
+  }
+
+  /* Additional Cyberpunk Enhancements for HackMeBank 
+   These can be added to your cyberpunk-theme.css file */
+
+/* ================ GLOBAL ENHANCEMENTS ================ */
+
+/* Background grid pattern for all pages */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(18, 27, 46, 0.98), rgba(18, 27, 46, 0.98)),
+        url('../assets/images/grid-pattern.png');
+    background-size: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Enhance headings with neon effect */
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+h1::after, h2::after, h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #00e0ff, transparent);
+}
+
+/* Add scanlines effect - subtle tech texture overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+}
+
+/* ================ VULNERABILITY PAGES ENHANCEMENTS ================ */
+
+/* Banner styling for vulnerability pages */
+.vulnerability-banner {
+    background-color: #1a1a2e;
+    border-left: 4px solid #ffdd57;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.vulnerability-banner i {
+    color: #ffdd57;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Tab navigation for vulnerability sections */
+.vulnerability-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 224, 255, 0.3);
+    margin-bottom: 2rem;
+}
+
+.vulnerability-tabs a {
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.vulnerability-tabs a.active,
+.vulnerability-tabs a:hover {
+    color: #00e0ff;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+.vulnerability-tabs a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00e0ff;
+    transition: width 0.3s ease;
+}
+
+.vulnerability-tabs a.active::after,
+.vulnerability-tabs a:hover::after {
+    width: 100%;
+}
+
+/* Section titles for vulnerability pages */
+.section-title {
+    color: #00e0ff;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-title::before {
+    content: '>';
+    margin-right: 0.5rem;
+    color: #00e0ff;
+}
+
+/* ================ LOGIN PAGE ENHANCEMENTS ================ */
+
+/* Login container */
+.auth-container {
+    background-color: rgba(10, 25, 47, 0.8);
+    border: 1px solid rgba(0, 224, 255, 0.3);
+    border-radius: 4px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.2);
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+/* Grid overlay effect */
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 4px,
+            rgba(0, 224, 255, 0.05) 4px,
+            rgba(0, 224, 255, 0.05) 8px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 4px,
+            rgba(0, 224, 255, 0.05) 4px,
+            rgba(0, 224, 255, 0.05) 8px
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Form styling */
+.auth-container input {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 224, 255, 0.3);
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.auth-container input:focus {
+    border-color: #00e0ff;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+    outline: none;
+}
+
+.auth-container .form-label {
+    color: #00e0ff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.auth-container .btn-login {
+    background-color: transparent;
+    border: 2px solid #00e0ff;
+    color: #00e0ff;
+    padding: 0.5rem 2rem;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.auth-container .btn-login:hover {
+    background-color: rgba(0, 224, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+}
+
+/* Security notice */
+.auth-container .security-notice {
+    background-color: rgba(255, 221, 87, 0.1);
+    border: 1px solid rgba(255, 221, 87, 0.3);
+    border-left: 3px solid #ffdd57;
+    padding: 0.75rem;
+    margin: 1rem 0;
+    color: #ffdd57;
+    font-size: 0.9rem;
+}
+
+/* Improved Header and Footer for HackMeBank */
+
+/* ================ IMPROVED HEADER ================ */
+
+header, .header, nav.navbar {
+    background: linear-gradient(90deg, #0a192f 0%, #172a45 100%);
+    border-bottom: 1px solid #00e0ff;
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+    padding: 0.75rem 0;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Header light effect line */
+header::after, .header::after, nav.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(0, 224, 255, 0) 0%, 
+        rgba(0, 224, 255, 0.8) 50%, 
+        rgba(0, 224, 255, 0) 100%);
+    z-index: 1;
+}
+
+/* Logo styling */
+.navbar-brand, .logo {
+    position: relative;
+    font-family: 'Orbitron', 'Share Tech Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00e0ff !important;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.7);
+}
+
+/* Logo light effect */
+.navbar-brand::before, .logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 224, 255, 0.2) 0%, rgba(0, 224, 255, 0) 70%);
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* Logo image glow effect */
+.navbar-brand img, .logo img {
+    filter: drop-shadow(0 0 5px rgba(0, 224, 255, 0.7));
+}
+
+/* Navigation links */
+.navbar-nav .nav-item .nav-link, .nav-links a {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+/* Navigation link hover/active effects */
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link.active,
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a.active {
+    color: #00e0ff;
+    text-shadow: 0 0 8px rgba(0, 224, 255, 0.7);
+}
+
+/* Underline effect for nav links */
+.navbar-nav .nav-item .nav-link::after,
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #00e0ff;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover::after,
+.navbar-nav .nav-item .nav-link:focus::after,
+.navbar-nav .nav-item .nav-link.active::after,
+.nav-links a:hover::after,
+.nav-links a:focus::after,
+.nav-links a.active::after {
+    width: 70%;
+}
+
+/* Security level selectors */
+.security-level, .security-level-selector {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 1rem;
+}
+
+.security-level-label {
+    color: #ffffff;
+    margin-right: 0.75rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Security buttons */
+.security-btn, .security-buttons button {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.security-btn[data-level="low"], 
+.security-buttons button[data-level="low"] {
+    border-color: #ff3860;
+    color: #ff3860;
+}
+
+.security-btn[data-level="medium"], 
+.security-buttons button[data-level="medium"] {
+    border-color: #ffdd57;
+    color: #ffdd57;
+}
+
+.security-btn[data-level="high"], 
+.security-buttons button[data-level="high"] {
+    border-color: #23d160;
+    color: #23d160;
+}
+
+.security-btn[data-level="low"].active, 
+.security-buttons button[data-level="low"].active {
+    background-color: #ff3860;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 56, 96, 0.5);
+}
+
+.security-btn[data-level="medium"].active, 
+.security-buttons button[data-level="medium"].active {
+    background-color: #ffdd57;
+    color: #333;
+    box-shadow: 0 0 10px rgba(255, 221, 87, 0.5);
+}
+
+.security-btn[data-level="high"].active, 
+.security-buttons button[data-level="high"].active {
+    background-color: #23d160;
+    color: white;
+    box-shadow: 0 0 10px rgba(35, 209, 96, 0.5);
+}
+
+/* Auth buttons */
+.auth-buttons .btn,
+.nav-auth .btn,
+header .btn,
+.header .btn,
+nav.navbar .btn {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.auth-buttons .btn-login,
+.auth-buttons .btn-primary,
+.nav-auth .btn-login,
+.nav-auth .btn-primary {
+    background-color: transparent;
+    border: 2px solid #00e0ff;
+    color: #00e0ff;
+}
+
+.auth-buttons .btn-login:hover,
+.auth-buttons .btn-primary:hover,
+.nav-auth .btn-login:hover,
+.nav-auth .btn-primary:hover {
+    background-color: rgba(0, 224, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+}
+
+.auth-buttons .btn-register,
+.auth-buttons .btn-secondary,
+.nav-auth .btn-register,
+.nav-auth .btn-secondary {
+    background-color: transparent;
+    border: 2px solid #ff36c7;
+    color: #ff36c7;
+}
+
+.auth-buttons .btn-register:hover,
+.auth-buttons .btn-secondary:hover,
+.nav-auth .btn-register:hover,
+.nav-auth .btn-secondary:hover {
+    background-color: rgba(255, 54, 199, 0.1);
+    box-shadow: 0 0 15px rgba(255, 54, 199, 0.3);
+}
+
+/* ================ IMPROVED FOOTER ================ */
+
+footer, .footer {
+    background: linear-gradient(90deg, #0a192f 0%, #172a45 100%);
+    border-top: 1px solid #00e0ff;
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2rem 0;
+    position: relative;
+    margin-top: 3rem;
+}
+
+/* Footer light effect line */
+footer::before, .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(0, 224, 255, 0) 0%, 
+        rgba(0, 224, 255, 0.8) 50%, 
+        rgba(0, 224, 255, 0) 100%);
+}
+
+footer p, .footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a, .footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+footer a:hover, .footer a:hover {
+    color: #00e0ff;
+    text-shadow: 0 0 8px rgba(0, 224, 255, 0.7);
+}
+
+/* Copyright text */
+.copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ================ MAIN PAGE CONTENT ================ */
+
+/* Consistent main container styling */
+.main-container, main, .content {
+    background-color: #f0f5fa;
+    color: #172a45;
+    min-height: 70vh;
+    padding: 2rem 0;
+}
+
+/* For pages with dark theme */
+.dark-theme .main-container,
+.dark-theme main,
+.dark-theme .content {
+    background-color: #121b2e;
+    color: #ffffff;
+}
+
+/* Security warning banners */
+.security-warning, .alert-warning {
+    background-color: rgba(255, 221, 87, 0.1);
+    border: 1px solid #ffdd57;
+    border-left: 4px solid #ffdd57;
+    color: #ffdd57;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.security-warning i,
+.alert-warning i {
+    color: #ffdd57;
+    margin-right: 0.5rem;
+}
+
+/* ================ MEDIA QUERIES ================ */
+
+@media (max-width: 767px) {
+    .navbar-brand, .logo {
+        font-size: 1.2rem;
+    }
+    
+    .security-level, .security-level-selector {
+        margin: 1rem 0;
+    }
+    
+    .auth-buttons, .nav-auth {
+        margin-top: 1rem;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .auth-buttons .btn, .nav-auth .btn {
+        width: 100%;
+        margin: 0 0.25rem;
+    }
+}
+
+/* ================ ANIMATIONS ================ */
+
+/* Blinking cursor effect */
+.cursor-blink::after {
+    content: '|';
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Neon flicker effect */
+.neon-flicker {
+    animation: neon-flicker 2s infinite alternate-reverse;
+}
+
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 10px rgba(0, 224, 255, 0.7), 0 0 20px rgba(0, 224, 255, 0.5);
+    }
+    20%, 22%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* Button hover animation */
+.cyber-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 224, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
+
+.cyber-btn:hover::after {
+    left: 100%;
+}
+
+/* ================ UTILITY CLASSES ================ */
+
+.text-cyan {
+    color: #00e0ff !important;
+}
+
+.text-magenta {
+    color: #ff36c7 !important;
+}
+
+.text-yellow {
+    color: #ffdd57 !important;
+}
+
+.bg-cyberdark {
+    background-color: #0a192f !important;
+}
+
+.bg-cyberdarker {
+    background-color: #05101f !important;
+}
+
+.neon-cyan {
+    color: #00e0ff;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.7);
+}
+
+.neon-magenta {
+    color: #ff36c7;
+    text-shadow: 0 0 10px rgba(255, 54, 199, 0.7);
+}
+
+.neon-yellow {
+    color: #ffdd57;
+    text-shadow: 0 0 10px rgba(255, 221, 87, 0.7);
+}
+
+.border-glow {
+    border: 1px solid #00e0ff;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+}
+
+.code-text {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.upper {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
